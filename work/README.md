@@ -31,3 +31,30 @@ $rws fidibus --workdir=data --numprocs=2 --refr=Scer,Cele download prep
 
 
 ## Jupyter notebooks
+The easiest way to run the Juypter notebooks describe here is by creating a
+suitable python environment.
+The following provides one way of doing this:
+
+```bash
+sudo dnf install libXcomposite libXcursor libXi libXtst libXrandr \
+                 alsa-lib mesa-libEGL libXdamage mesa-libGL libXScrnSaver
+
+#Download the Anaconda3 installer from https://www.anaconda.com/, then:
+#
+mv ~/Downloads/Anaconda3-2019.10-Linux-x86_64.sh ./
+bash ./Anaconda3-2019.10-Linux-x86_64.sh 
+\rm Anaconda3-2019.10-Linux-x86_64.sh
+
+#In a new shell:
+#
+conda config --set auto_activate_base False
+conda deactivate
+
+#In a new shell:
+#
+conda --version
+conda info --envs
+
+conda create --name iLoci biopython pycurl pyyaml pytest jupyter pandas seaborn
+conda activate iLoci
+```

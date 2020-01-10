@@ -10,10 +10,10 @@ This repository documents application of
 analyze genomic interval loci (iLoci) as described in the paper
 Lai, Standage, and Brendel (2020).
 Please refer to the
-[AEGeAn Installation](https://github.com/BrendelGroup/AEGeAn/INSTALL.md)
+[AEGeAn Installation](https://github.com/BrendelGroup/AEGeAn/blob/master/INSTALL.md)
 site for details on how to obtain the relevant software.
 The simplest way to get going is to use the AEGeAn
-[Singularity](http://singularity.lbl.gov) container, e.g. as follows:
+[Singularity](https://sylabs.io/docs/) container, e.g. as follows:
 
 ```bash
 cd

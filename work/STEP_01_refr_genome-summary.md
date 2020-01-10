@@ -14,7 +14,7 @@ The `fidibus` script was used to perform the following tasks:
 - compile tables of summary statistics over the data (the `stats` task)
 
 You can copy/paste the relevant command from below or alternatively execute
-the [xSTEP_01.sh](./xSTEP_01.sh) bash script.
+the [STEP_01.sh](./STEP_01.sh) bash script.
 
 ```bash
 fidibus --workdir=data \

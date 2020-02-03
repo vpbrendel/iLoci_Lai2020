@@ -50,14 +50,14 @@ fidibus --workdir=data-delta750 \
 fidibus-compact.py --workdir=data --centroid=2.25 --length=1000000 \
                   --iqnt=0.95 --gqnt=0.05 \
                   Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap \
-    > tables/phisigma-refr-delta500.tsv
+    > tables/phisigma-refr-centroids-delta500.tsv
 
 fidibus-compact.py --workdir=data-delta300 --centroid=2.25 --length=1000000 \
                   --iqnt=0.95 --gqnt=0.05 \
                   Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap \
-    > tables/phisigma-refr-delta300.tsv
+    > tables/phisigma-refr-centroids-delta300.tsv
 
 fidibus-compact.py --workdir=data-delta750 --centroid=2.25 --length=1000000 \
                   --iqnt=0.95 --gqnt=0.05 \
                   Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap \
-    > tables/phisigma-refr-delta750.tsv
+    > tables/phisigma-refr-centroids-delta750.tsv

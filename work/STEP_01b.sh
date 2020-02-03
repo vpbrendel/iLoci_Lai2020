@@ -13,3 +13,8 @@ do
 	cleanup
 done
 \rm data/*/*.fna.gz data/*/*.gff.gz data/*/*.faa.gz
+
+# Let's also put the error warnings into a subdirectory for safekeeping:
+#
+mkdir logfiles
+\mv err* logfiles

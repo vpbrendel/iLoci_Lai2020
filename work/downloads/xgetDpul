@@ -1,0 +1,3 @@
+curl -O http://genome.jgi.doe.gov/Dappu1/download/Daphnia_pulex.fasta.gz
+curl -O http://genome.jgi.doe.gov/Dappu1/download/FrozenGeneCatalog20110204.gff3.gz
+curl -O http://genome.jgi.doe.gov/Dappu1/download/FrozenGeneCatalog20110204.proteins.fasta.gz

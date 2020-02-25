@@ -14,7 +14,8 @@ The `fidibus` script was used to perform the following tasks:
 - compile tables of summary statistics over the data (the `stats` task)
 
 You can copy/paste the relevant command from below or alternatively execute
-the [STEP_01.sh](./STEP_01.sh) bash script.
+the [STEP_01a.sh](./STEP_01a.sh), [STEP_01b.sh](./STEP_01b.sh), and
+[STEP_01c.sh](./STEP_01c.sh)  bash scripts.
 
 ```bash
 fidibus --workdir=data \
@@ -48,7 +49,7 @@ Summaries of iLocus composition for these genomes, corresponding to Tables 1-3
 in the manuscript, were computed with the following commands.
 
 ```bash
-fidibus-ilocus-summary.py  --workdir=data --outfmt=tex Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap
-fidibus-pilocus-summary.py --workdir=data --outfmt=tex Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap
-fidibus-milocus-summary.py --workdir=data --outfmt=tex Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap
+fidibus-ilocus-summary.py  --workdir=data --outfmt=tsv Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap
+fidibus-pilocus-summary.py --workdir=data --outfmt=tsv Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap
+fidibus-milocus-summary.py --workdir=data --outfmt=tsv Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap
 ```

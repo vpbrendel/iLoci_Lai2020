@@ -52,24 +52,18 @@ fidibus   --workdir=data  --numprocs=${NUMPROCS} \
 
 # (iii) More:
 #
-fidibus --workdir=data --local --label=Dpul \
+fidibus --cfgdir=genome_configs --workdir=data --local --label=Dpul \
         --gdna=downloads/Daphnia_pulex.fasta.gz \
         --gff3=downloads/FrozenGeneCatalog20110204.gff3.gz \
         --prot=downloads/FrozenGeneCatalog20110204.proteins.fasta.gz \
         download prep iloci breakdown stats	>& err_Dpul
 
-for species in  Tcas Turt
+for species in  Mvit Tcas Turt
 do
   fidibus  --workdir=data  --refr=$species  download prep  >& err_$species &
 done
 wait
 
 fidibus   --workdir=data  --numprocs=${NUMPROCS} \
-	--refr=Tcas,Turt \
+	--refr=Mvit,Tcas,Turt \
 	iloci breakdown stats   >& err_all4
-
-
-# And more:
-
-fidibus   --cfgdir genome_configs --workdir=data --refr=Mvit download prep \
-	iloci breakdown stats   >& err_Mvit

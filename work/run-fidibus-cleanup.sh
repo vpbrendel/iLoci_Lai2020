@@ -7,7 +7,7 @@
 for species in  Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap \
 	Vcar Apro Crei Csub Cvar Mcom Mpus Oluc Otau \
 	Pdom Aech Agam Amh3 Bter Cflo Dmel Hsal Nvit Pcan \
-	Tcas Turt
+	Mvit Tcas Turt
 do
   fidibus \
 	--workdir=data \
@@ -15,9 +15,9 @@ do
 	--refr=$species \
 	cleanup
 done
-fidibus   --cfgdir genome_configs --workdir=data \
-	--keep .gdna.fa .gff3 .all.prot.fa \
-	--refr=Mvit cleanup
+#fidibus   --cfgdir genome_configs --workdir=data \
+#	--keep .gdna.fa .gff3 .all.prot.fa \
+#	--refr=Mvit cleanup
 
 fidibus --workdir=data \
 	--keep .gdna.fa .gff3 .all.prot.fa \

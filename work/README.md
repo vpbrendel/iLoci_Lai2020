@@ -39,11 +39,10 @@ The following provides one way of doing this:
 sudo dnf install libXcomposite libXcursor libXi libXtst libXrandr \
                  alsa-lib mesa-libEGL libXdamage mesa-libGL libXScrnSaver
 
-#Download the Anaconda3 installer from https://www.anaconda.com/, then:
+#Download the Anaconda3 installer from https://www.anaconda.com/, then e.g.:
 #
-mv ~/Downloads/Anaconda3-2019.10-Linux-x86_64.sh ./
-bash ./Anaconda3-2019.10-Linux-x86_64.sh
-\rm Anaconda3-2019.10-Linux-x86_64.sh
+bash ~/Downloads/Anaconda3-2019.10-Linux-x86_64.sh
+\rm  ~/Downloads/Anaconda3-2019.10-Linux-x86_64.sh
 
 #In a new shell:
 #
@@ -56,7 +55,7 @@ conda --version
 conda info --envs
 
 conda create --name iLoci biopython pycurl pyyaml pytest pytest-cov \
-	jupyter pandas seaborn
+	jupyter pandas seaborn nb_conda_kernels ipykernel r-irkernel
 conda activate iLoci
 ```
 

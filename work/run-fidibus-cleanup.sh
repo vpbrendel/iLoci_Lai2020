@@ -15,9 +15,6 @@ do
 	--refr=$species \
 	cleanup
 done
-#fidibus   --cfgdir genome_configs --workdir=data \
-#	--keep .gdna.fa .gff3 .all.prot.fa \
-#	--refr=Mvit cleanup
 
 fidibus --workdir=data \
 	--keep .gdna.fa .gff3 .all.prot.fa \

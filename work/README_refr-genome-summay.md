@@ -1,4 +1,4 @@
-# 1. Summary of 10 model organism genomes
+# Summary of model organism genomes
 
 We selected a diverse set of 10 model organisms to demonstrate the utility of
 iLoci for providing a descriptive overview of genome content and organization.
@@ -14,8 +14,10 @@ The `fidibus` script was used to perform the following tasks:
 - compile tables of summary statistics over the data (the `stats` task)
 
 You can copy/paste the relevant command from below or alternatively execute
-the [STEP_01a.sh](./STEP_01a.sh), [STEP_01b.sh](./STEP_01b.sh), and
-[STEP_01c.sh](./STEP_01c.sh)  bash scripts.
+the [run-fidibus-stats.sh](./run-fidibus-stats.sh) and
+[run-fidibus-cleanup.sh](./run-fidibus-cleanup.sh)  bash scripts.
+Note that the scripts include also the work on the special interest genomes
+described in the manuscript, documentation of which is not repeated here.
 
 ```bash
 fidibus --workdir=data \
@@ -34,19 +36,20 @@ about the best runtime that can be expected.
 
 ## Output data
 
-The `fidibus` command creates a directory called `data` containing 10
+The `fidibus` command creates a directory called `data` containing
 subdirectories, each dedicated to a specific genome.
 These subdirectories store intermediate and ancillary data files.
 Of particular interest are the following:
 
 - `Xxxx.iloci.gff3`: full annotation file, with iLoci specified and associated with their constituent gene features
 - `Xxxx.miloci.gff3`: annotation file containing just iLocus features, with overlapping siLoci and niLoci merged into miLoci
-- `Xxxx.yyyy.tsv`: statistics calculated on various data types (iLoci, miLoci, pre-mRNAs, mature mRNAs, exons, introns, coding sequences) and compiled into a tabular format for easy loading into R, Python, or similar data analysis environments 
+- `Xxxx.yyyy.tsv`: statistics calculated on various data types (iLoci, miLoci, pre-mRNAs, mature mRNAs, exons, introns, coding sequences) and compiled into a tabular format for easy loading into R, Python, or similar data analysis environments
 
 ## iLocus summary
 
 Summaries of iLocus composition for these genomes, corresponding to Tables 1-3
-in the manuscript, were computed with the following commands.
+in the manuscript, were computed with the following commands (script
+[make-Tables1-3.sh](./make-Tables1-3.sh)).
 
 ```bash
 fidibus-ilocus-summary.py  --workdir=data --outfmt=tsv Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap

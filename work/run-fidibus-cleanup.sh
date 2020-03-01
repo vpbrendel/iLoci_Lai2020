@@ -1,23 +1,24 @@
 #!/bin/bash
 #
 
-# We retain only the output files from STEP_01a that are necessary for
-# our subsequent analyses:
+# We retain only the output files from run-fidibus-stats.sh that are necessary
+# for our subsequent analyses:
 #
 for species in  Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap \
 	Vcar Apro Crei Csub Cvar Mcom Mpus Oluc Otau \
+	Atha Bdis Osat \
 	Pdom Aech Agam Amh3 Bter Cflo Dmel Hsal Nvit Pcan \
 	Mvit Tcas Turt
 do
   fidibus \
 	--workdir=data \
-	--keep .gdna.fa .gff3 .all.prot.fa \
+	--keep .gdna.fa .gff3 .prot.fa \
 	--refr=$species \
 	cleanup
 done
 
 fidibus --workdir=data \
-	--keep .gdna.fa .gff3 .all.prot.fa \
+	--keep .gdna.fa .gff3 .prot.fa \
         --local \
         --label=Dpul \
         --gdna=downloads/Daphnia_pulex.fasta.gz \

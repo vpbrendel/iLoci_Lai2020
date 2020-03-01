@@ -37,7 +37,20 @@ fidibus   --workdir=data  --numprocs=${NUMPROCS} \
 	iloci breakdown stats   >& err_all2
 
 
-# (ii) Polistes dominula and other Hymenoptera:
+# (ii) More plants:
+#
+for species in  Atha Bdis Osat
+do
+  fidibus  --workdir=data  --refr=$species  download prep  >& err_$species &
+done
+wait
+
+fidibus   --workdir=data  --numprocs=${NUMPROCS} \
+	--refr=Atha,Bdis,Osat \
+	iloci breakdown stats   >& err_all3
+
+
+# (iii) Polistes dominula and other Hymenoptera:
 #
 for species in  Pdom Aech Agam Amh3 Bter Cflo Dmel Hsal Nvit Pcan 
 do
@@ -47,10 +60,10 @@ wait
 
 fidibus   --workdir=data  --numprocs=${NUMPROCS} \
 	--refr=Pdom,Aech,Agam,Amh3,Bter,Cflo,Dmel,Hsal,Nvit,Pcan \
-	iloci breakdown stats   >& err_all3
+	iloci breakdown stats   >& err_all4
 
 
-# (iii) More:
+# (iv) More:
 #
 fidibus --cfgdir=genome_configs --workdir=data --local --label=Dpul \
         --gdna=downloads/Daphnia_pulex.fasta.gz \
@@ -66,4 +79,4 @@ wait
 
 fidibus   --workdir=data  --numprocs=${NUMPROCS} \
 	--refr=Mvit,Tcas,Turt \
-	iloci breakdown stats   >& err_all4
+	iloci breakdown stats   >& err_all5

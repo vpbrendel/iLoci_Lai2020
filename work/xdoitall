@@ -1,6 +1,9 @@
 singularity pull --name aegean.simg shub://BrendelGroup/AEGeAn
 
 cd downloads
+# ... read the instructions in xgetDpul first (you will need to set up a JGI
+#  account to get the Daphnia pulex data ...):
+#
 ./xgetDpul
 cd ..
 

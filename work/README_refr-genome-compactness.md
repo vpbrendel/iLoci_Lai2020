@@ -1,6 +1,6 @@
-# 2. Evaluation of genome compactness
+# Evaluation of genome compactness
 
-We assessed the compactness of 10 references genomes on two related measures.
+We assessed the compactness of the references genomes on two related measures,
 
 - φ (phi), the proportion of giLoci merged into miLoci
 - σ (sigma), the proportion of the genome sequence occupied by miLoci
@@ -14,6 +14,9 @@ fidibus-compact.py --workdir=data/ --length=1000000 \
                   Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap \
     > tables/phisigma-refr.tsv
 ```
+
+(script for the above and the commands in the next section:
+[run-explore-deltas.sh](./run-explore-deltas.sh)).
 
 ## Different values of δ
 
@@ -54,4 +57,4 @@ fidibus-compact.py --workdir=data-delta750 --centroid=2.25 --length=1000000 \
 
 ## Figures
 
-See [02-genome-compactness.ipynb](02-genome-compactness.ipynb) for visualizations of these data.
+See [make-F3aSF5.ipynb](make-F3aSF5.ipynb) for visualization of these data.

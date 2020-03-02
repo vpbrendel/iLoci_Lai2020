@@ -37,7 +37,20 @@ fidibus   --workdir=data  --numprocs=${NUMPROCS} \
 	iloci breakdown stats   >& err_all2
 
 
-# (ii) Polistes dominula and other Hymenoptera:
+# (ii) More plants:
+#
+for species in  Atha Bdis Osat
+do
+  fidibus  --workdir=data  --refr=$species  download prep  >& err_$species &
+done
+wait
+
+fidibus   --workdir=data  --numprocs=${NUMPROCS} \
+	--refr=Atha,Bdis,Osat \
+	iloci breakdown stats   >& err_all3
+
+
+# (iii) Polistes dominula and other Hymenoptera:
 #
 for species in  Pdom Aech Agam Amh3 Bter Cflo Dmel Hsal Nvit Pcan 
 do
@@ -47,29 +60,23 @@ wait
 
 fidibus   --workdir=data  --numprocs=${NUMPROCS} \
 	--refr=Pdom,Aech,Agam,Amh3,Bter,Cflo,Dmel,Hsal,Nvit,Pcan \
-	iloci breakdown stats   >& err_all3
+	iloci breakdown stats   >& err_all4
 
 
-# (iii) More:
+# (iv) More:
 #
-fidibus --workdir=data --local --label=Dpul \
+fidibus --cfgdir=genome_configs --workdir=data --local --label=Dpul \
         --gdna=downloads/Daphnia_pulex.fasta.gz \
         --gff3=downloads/FrozenGeneCatalog20110204.gff3.gz \
         --prot=downloads/FrozenGeneCatalog20110204.proteins.fasta.gz \
         download prep iloci breakdown stats	>& err_Dpul
 
-for species in  Tcas Turt
+for species in  Mvit Tcas Turt
 do
   fidibus  --workdir=data  --refr=$species  download prep  >& err_$species &
 done
 wait
 
 fidibus   --workdir=data  --numprocs=${NUMPROCS} \
-	--refr=Tcas,Turt \
-	iloci breakdown stats   >& err_all4
-
-
-# And more:
-
-fidibus   --cfgdir genome_configs --workdir=data --refr=Mvit download prep \
-	iloci breakdown stats   >& err_Mvit
+	--refr=Mvit,Tcas,Turt \
+	iloci breakdown stats   >& err_all5

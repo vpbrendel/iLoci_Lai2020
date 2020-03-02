@@ -12,13 +12,13 @@ for species in  Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap \
 do
   fidibus \
 	--workdir=data \
-	--keep .gdna.fa .gff3 .prot.fa \
+	--keep .gdna.fa .gff3 .prot.fa .protids.txt \
 	--refr=$species \
 	cleanup
 done
 
 fidibus --workdir=data \
-	--keep .gdna.fa .gff3 .prot.fa \
+	--keep .gdna.fa .gff3 .prot.fa .protids.txt \
         --local \
         --label=Dpul \
         --gdna=downloads/Daphnia_pulex.fasta.gz \

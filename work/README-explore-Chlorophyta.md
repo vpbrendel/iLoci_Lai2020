@@ -102,7 +102,7 @@ done
 ```
 
 Finally, we use custom Python scripts to compute a breakdown of each species, for each species showing the number of iLoci assigned to each category, as well as the proportion of the genome occupied by iLoci of that category.
-See [make-F4aF4bSF4a.ipynb](make-F4aF4bSF4a.ipynb) for the code used to plot these breakdowns.
+See [make-F4a-F4b-SF4a.ipynb](make-F4a-F4b-SF4a.ipynb) for the code used to plot these breakdowns.
 
 ```bash
 # The folllowing will produce warnings for iLoci encoding protein sequences

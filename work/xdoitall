@@ -10,7 +10,8 @@ cd ..
 singularity exec -e aegean.simg  ./run-fidibus-stats.sh
 singularity exec -e aegean.simg  ./run-fidibus-cleanup.sh
 singularity exec -e aegean.simg  ./make-Tables1-3.sh
-singularity exec -e aegean.simg  ./run-explore-deltas.sh
+singularity exec -e aegean.simg  ./run-explore-compactness-refr.sh
+singularity exec -e aegean.simg  ./run-explore-compactness-othg.sh
 singularity exec -e aegean.simg  ./run-explore-Chlorophyta.sh >& logfiles/Chlorophyta.log
 
 ./make-figures.sh

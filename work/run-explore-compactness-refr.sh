@@ -61,3 +61,18 @@ fidibus-compact.py --workdir=data-delta750 --centroid=2.25 --length=1000000 \
                   --iqnt=0.95 --gqnt=0.05 \
                   Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap \
     > tables/phisigma-refr-centroids-delta750.tsv
+
+
+# Compare observed compactness with calculations on randomized genomes:
+#
+parallel --gnu --jobs=10 bash scripts/shuffle.sh {} ::: \
+	Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap
+
+fidibus-milocus-summary.py --workdir=data --shuffled --outfmt=tex \
+	Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap \
+	> tables/LSB20-SuppTable1-miloci.tex
+
+fidibus-compact.py --workdir=data --shuffled \
+	--centroid=2.25 --length=1000000 --iqnt=0.95 --gqnt=0.05 \
+	Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap \
+	> tables/phisigma-refr-shuffled-centroids-delta500.tsv

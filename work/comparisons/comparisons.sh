@@ -7,6 +7,7 @@ Amels=(Amel Amh3)
 
 fidibus --numprocs=3 --refr=Amel,Amh3,Atha download prep iloci breakdown stats
 for name in ${Amels[@]}
+do
     mv species/${species}/${species}.iloci.tsv Amel/ 
     mv species/${species}/${species}.iloci.fa Amel/
 done

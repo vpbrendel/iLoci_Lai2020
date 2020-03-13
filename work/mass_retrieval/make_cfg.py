@@ -11,7 +11,7 @@ import system
 batch = [] # Initiate a batch txt file at the end to facilitate fidibus
 if len(sys.argv) < 2:
     print("Enter one branch name")
-elif: len(sys.argv) > 2: 
+elif len(sys.argv) > 2: 
     print("Enter only one branch name")
 else:
     branch = sys.argv[1]

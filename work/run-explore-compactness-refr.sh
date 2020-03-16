@@ -70,7 +70,7 @@ parallel --gnu --jobs=10 bash scripts/shuffle.sh {} ::: \
 
 fidibus-milocus-summary.py --workdir=data --shuffled --outfmt=tex \
 	Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap \
-	> tables/LSB20-SuppTable1-miloci.tex
+	> tables/LSB20GB-SuppTable1-miloci.tex
 
 fidibus-compact.py --workdir=data --shuffled \
 	--centroid=2.25 --length=1000000 --iqnt=0.95 --gqnt=0.05 \

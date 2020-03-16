@@ -3,7 +3,7 @@ Dpul:
     common: water flea
     source: local
     branch: invertebrate
-    build: BOGUSFrozenGeneCatalog20110204
+    build: FrozenGeneCatalog20110204
     gdna: downloads/Daphnia_pulex.fasta.gz
     gff3: downloads/FrozenGeneCatalog20110204.gff3.gz
     prot: downloads/FrozenGeneCatalog20110204.proteins.fasta.gz

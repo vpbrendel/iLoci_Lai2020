@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+#xrunAt11
+
+~/.local/bin/fidibus --workdir=./ --local --label=At11 --gdna=ATgdna.fa --gff3=ATaraport11.gff3 --prot=Araport11_genes.201606.pep.fasta download prep iloci breakdown stats

@@ -11,10 +11,10 @@ scripts/shuffle_iloci.py --seed=54321 \
 	--out=data/${species}/${species}.shuffled.genes.gff3 \
 	data/${species}/${species}.iloci.0d.gff3
 
-locuspocus --verbose --delta=500 --skipends --cds --namefmt="${species}ILCshuf-%06lu" \
+locuspocus --verbose --delta=500 --skipends --cds \
+	--namefmt="${species}ILCshuf-%06lu" \
 	--outfile=data/${species}/${species}.iloci.shuffled.gff3 \
 	data/${species}/${species}.shuffled.genes.gff3
-
 
 
 # Analyzing iLoci:

@@ -65,10 +65,7 @@ fidibus   --workdir=data  --numprocs=${NUMPROCS} \
 
 # (iv) More:
 #
-fidibus --cfgdir=genome_configs --workdir=data --local --label=Dpul \
-        --gdna=downloads/Daphnia_pulex.fasta.gz \
-        --gff3=downloads/FrozenGeneCatalog20110204.gff3.gz \
-        --prot=downloads/FrozenGeneCatalog20110204.proteins.fasta.gz \
+fidibus --cfgdir=genome_configs --workdir=data --refr=Dpul \
         download prep iloci breakdown stats	>& err_Dpul
 
 for species in  Mvit Tcas Turt

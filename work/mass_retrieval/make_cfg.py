@@ -1,12 +1,7 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Sep 29 22:00:07 2019
-
-@author: Tim
-"""
-
+#!/usr/bin/env pythyon
+#
 import re
-import system
+import sys
 
 batch = [] # Initiate a batch txt file at the end to facilitate fidibus
 if len(sys.argv) < 2:

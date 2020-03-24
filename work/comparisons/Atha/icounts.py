@@ -1,7 +1,7 @@
 import pickle
 import pandas as pd
 
-species = "Atha"
+species = "At11"
 iloci = pd.read_csv(species + '.iloci.tsv',sep='\t')
 ii = iloci['LocusClass'] == "iiLocus"
 iiloci = iloci[ii]

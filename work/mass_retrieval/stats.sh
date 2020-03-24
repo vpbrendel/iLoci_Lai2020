@@ -8,6 +8,6 @@ do
     fidibus-ilocus-summary.py --outfmt=tsv ${species_list[@]} > ${batch}-ilocus-summaries.tsv
     fidibus-pilocus-summary.py --outfmt=tsv ${species_list[@]} > ${batch}-pilocus-summaries.tsv
     fidibus-milocus-summary.py --outfmt=tsv ${species_list[@]} > ${batch}-milocus-summaries.tsv
-    fidibus-compact.py --centroid=2.25  --length=1000000 --iqnt=0.95 --gqnt=0.05 ${species_list[@]} > ${batch}_fungi.tsv
+    fidibus-compact.py --centroid=2.25  --length=1000000 --iqnt=0.95 --gqnt=0.05 ${species_list[@]} > phisigma_${batch}.tsv
 done
 python compute_averages.py

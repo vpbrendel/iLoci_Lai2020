@@ -1,0 +1,8 @@
+singularity exec -e ../aegean.simg  ./configure-genomes.sh 
+singularity exec -e -B /projects/vbrendel/iLoci_Lai2020/work ../aegean.simg  ./run-fidibus-all.sh
+singularity exec -e -B /projects/vbrendel/iLoci_Lai2020/work ../aegean.simg  ./get-statistics.sh >& err
+singularity exec -e -B /projects/vbrendel/iLoci_Lai2020/work ../aegean.simg  python3 make-SuppTable234_taxa_averages.py
+mv LSB20GB-SuppTable*_averages.tsv ../tables
+
+OUTPUT
+mv fungi* inver* plant* prot* vert* OUTPUT

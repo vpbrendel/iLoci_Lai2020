@@ -3,16 +3,23 @@
 import re
 import sys
 
-batch = [] # Initiate a batch txt file at the end to facilitate fidibus
+# We process lists *_latest.txt (derived from successful calls to the
+# NCBI ftp site) one list at a time as provided by the argument to this
+# script.
+
+cfglist = [] # ... will contain the succesfully configured species labels
+
 if len(sys.argv) < 2:
     print("Enter one branch name")
 elif len(sys.argv) > 2: 
     print("Enter only one branch name")
 else:
     branch = sys.argv[1]
+
 p = re.compile("\d{3}.\d_") # Accessions of the form GCF_(digits).(digit) for the most part.
 # Exceptions: GCF_(digits).(two digits)
 p2 = re.compile("\d{3}.\d{2}_")  # Handles this exception
+
 f = open(branch + '_latest.txt', 'r') 
 for line in f:
     yaml = {}
@@ -39,12 +46,14 @@ for line in f:
     L = [yaml['file_name'] + ':\n', "    species: " + yaml['species'] + '\n',
          "    source: refseq \n","    branch: " + branch + '\n',
          "    accession: " + yaml['accession'] + '\n',
-         "    build: " + yaml['build']]
-    batch.append(yaml['file_name'] + '\n')
-    with open(branch + '/' + yaml['file_name'] + ".yml",'w') as y:
+         "    build: " + yaml['build'] + '\n']
+    cfglist.append(yaml['file_name'] + '\n')
+    with open(branch + '_configs/' + yaml['file_name'] + ".yml",'w') as y:
         y.writelines(L) 
 f.close()
 
-# Create the batch text file.
-with open(branch + '.txt','w') as b:
-    b.writelines(set(batch))
+# Write out the list of successfully configured species into file
+# *_configured.txt:
+#
+with open(branch + '_configured.txt','w') as b:
+    b.writelines(sorted(set(cfglist)))

@@ -17,7 +17,7 @@ sed -e "s/Name=.*CDS:.*//g" \
 
 cat ATtemp1.gff3 | gt gff3 -sort -retainids > ATtemp2.gff3
 
-gff3splitmultiparentlines.pl ATtemp2.gff3 > ATtemp3.gff3
+./gff3splitmultiparentlines.pl ATtemp2.gff3 > ATtemp3.gff3
 
 grep -E -v "(ChrM|ChrC)" ATtemp3.gff3 > ATaraport11.gff3
 
@@ -26,5 +26,5 @@ gt gff3validator ATaraport11.gff3
 grep -E -v "(ChrM|ChrC)" Araport11_genes.201606.pep.fasta > test.fasta
 mv test.fasta Araport11_genes.201606.pep.fasta
 
-python filter.py
+python filterAt11dna.py
 mv test.fa ATgdna.fa

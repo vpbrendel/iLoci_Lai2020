@@ -8,7 +8,7 @@ set -o pipefail
 #
 lastz Amh3.iloci.fa[multiple] Amel.iloci.fa --match=1,9 --filter=identity:95 --chain \
 		  --format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
-		  > entire.tsva &
+		  > entire.tsv &
 lastz Amh3.iloci.fa[multiple] Amel.filoci.fa --match=1,9 --filter=identity:95 --chain \
 		  --format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
 		  > fi.tsv &

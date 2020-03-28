@@ -1,23 +1,27 @@
 #!/bin/bash
+#
 set -e 
 set -u
 set -o pipefail
 
+# Assuming we have at least 6 processors, we run each lastz job in the background:
+#
 lastz Amh3.iloci.fa[multiple] Amel.iloci.fa --match=1,9 --filter=identity:95 --chain \
 		  --format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
-		  > entire.tsv
+		  > entire.tsva &
 lastz Amh3.iloci.fa[multiple] Amel.filoci.fa --match=1,9 --filter=identity:95 --chain \
 		  --format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
-		  > fi.tsv
+		  > fi.tsv &
 lastz Amh3.iloci.fa[multiple] Amel.ciloci.fa --match=1,9 --filter=identity:95 --chain \
 		  --format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
-		  > ci.tsv
+		  > ci.tsv &
 lastz Amh3.iloci.fa[multiple] Amel.niloci.fa --match=1,9 --filter=identity:95 --chain \
                   --format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
-                  > ni.tsv
+                  > ni.tsv &
 lastz Amh3.iloci.fa[multiple] Amel.iiloci.fa --match=1,9 --filter=identity:95 --chain \
                   --format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
-                  > ii.tsv
+                  > ii.tsv &
 lastz Amh3.iloci.fa[multiple] Amel.siloci.fa --match=1,9 --filter=identity:95 --chain \
                   --format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
-                  > si.tsv
+                  > si.tsv &
+wait

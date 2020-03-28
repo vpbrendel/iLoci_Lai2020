@@ -26,8 +26,10 @@ bash xprepAt11 && bash xrunAt11 && mv species/At11/At11.iloci.* .
 mv At11/At11.iloci.* .
 
 cd ../Amel
+python3 parse_loci.py
 bash ./chaining.sh && bash ./hsp.sh && bash ./counts.sh
 cd ../Atha
+python3 parse_loci.py
 bash ./chaining.sh && bash ./hsp.sh && bash ./counts.sh
 cd ..
 

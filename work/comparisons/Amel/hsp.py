@@ -2,6 +2,7 @@ import pandas as pd
 import pickle
 
 types = ['fi','ni','ci','ii','si']
+counts = {}
 for itype in types:
     blast = pd.read_csv(itype + ".tsv", sep='\t')
     blast[['num1','num2']] = blast['identity'].str.split('/',expand=True)
@@ -52,6 +53,6 @@ for itype in types:
     for locus in relations:
         if len(relations[locus]) > 0:
             num_matches += 1
-    
-    print(str(num_matches) + ' iLoci had at least one match')
-    print('Conserved: ' + str(num_conserved))
+    counts[itype] = num_matches
+    with open('Amel-counts', 'wb') as f:
+        pickle.dump(counts, f)

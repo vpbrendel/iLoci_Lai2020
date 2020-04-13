@@ -1,7 +1,16 @@
+#!/usr/bin/env pythone
+#
+import sys
 from Bio import SeqIO
 import pandas as pd
 
-species = "Amel"
+if len(sys.argv) < 2:
+    print("\nPlease provide the species label for input files\n",
+          "<species>.iloci.tsv and <species>.iloci.fa.\n\n",
+          file=sys.stderr)
+    exit()
+
+species = sys.argv[1]
 iloci = pd.read_csv(species + '.iloci.tsv',sep='\t')
 ii = iloci['LocusClass'] == "iiLocus"
 iiloci = iloci[ii]
@@ -16,7 +25,7 @@ fi_ids = set(filoci['LocusId'])
 si_ids = set(siloci['LocusId'])
 ni_ids = set(niloci['LocusId'])
 ci_ids = set(ciloci['LocusId'])
-print(len(ni_ids))
+
 input_seq_iterator = list(SeqIO.parse(species + ".iloci.fa", "fasta"))
 
 ii_seq_iterator = (record for record in input_seq_iterator \

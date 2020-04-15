@@ -65,7 +65,7 @@ cd ./Amel
 for iltype in ${iltypes[@]}
 do
   n=`cat Amel.${iltype}.fa | egrep "^>" | wc -l`
-  python3 ../scripts/process_lastz_output.py -n $n -i Amel.${iltype}-vs-Amh3.lastz -v > Amel.${iltype}-vs-Amh3.summary
+  python3 ../scripts/process_lastz_output.py -n $n -i Amel.${iltype}-vs-Amh3.lastz -v -o Amel.${iltype}-vs-Amh3.summary
 done
 cd ..
 
@@ -108,6 +108,6 @@ cd Amel
 for iltype in ${iltypes[@]}
 do
   n=`cat Amh3.${iltype}.fa | egrep "^>" | wc -l`
-  python3 ../scripts/process_lastz_output.py -n $n -i Amh3.${iltype}-vs-Amel.lastz -v > Amh3.${iltype}-vs-Amel.summary
+  python3 ../scripts/process_lastz_output.py -n $n -i Amh3.${iltype}-vs-Amel.lastz -v -o Amh3.${iltype}-vs-Amel.summary
 done
 cd ..

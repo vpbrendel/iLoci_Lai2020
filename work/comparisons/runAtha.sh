@@ -69,7 +69,7 @@ cd ./Atha
 for iltype in ${iltypes[@]}
 do
   n=`cat Atha.${iltype}.fa | egrep "^>" | wc -l`
-  python3 ../scripts/process_lastz_output.py -n $n -i Atha.${iltype}-vs-At11.lastz -v > Atha.${iltype}-vs-At11.summary
+  python3 ../scripts/process_lastz_output.py -n $n -i Atha.${iltype}-vs-At11.lastz -v -o Atha.${iltype}-vs-At11.summary
 done
 cd ..
 
@@ -112,6 +112,6 @@ cd ./Atha
 for iltype in ${iltypes[@]}
 do
   n=`cat At11.${iltype}.fa | egrep "^>" | wc -l`
-  python3 ../scripts/process_lastz_output.py -n $n -i At11.${iltype}-vs-Atha.lastz -v > At11.${iltype}-vs-Atha.summary
+  python3 ../scripts/process_lastz_output.py -n $n -i At11.${iltype}-vs-Atha.lastz -v -o At11.${iltype}-vs-Atha.summary
 done
 cd ..

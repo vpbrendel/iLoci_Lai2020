@@ -5,7 +5,7 @@
 import argparse
 import sys
 import pandas as pd
-import pickle
+import json
 
 pd.options.display.width = 0
 
@@ -54,6 +54,7 @@ nbr_redefined = 0
 nbr_contained = 0
 nbr_anchored = 0
 conservediloci = {}
+qsrelations = {}
 
 for qlocus in qloci:
     if args.verbose:
@@ -109,15 +110,24 @@ for qlocus in qloci:
             if len(contained_in) > 0  and  len(anchored_by) > 0:
                 if args.verbose: print("\nStatus: %s is unconserved-redefined" % (qlocus))
                 nbr_redefined += 1
+                qsrelations.update( {qlocus: ['redefined_to']} )
+                qsrelations[qlocus].extend(contained_in)
+                qsrelations[qlocus].extend(anchored_by)
             elif len(contained_in) > 0:
                 if args.verbose: print("\nStatus: %s is unconserved-contained" % (qlocus))
                 nbr_contained+= 1
+                qsrelations.update( {qlocus: ['contained_in']} )
+                qsrelations[qlocus].extend(contained_in)
             else:
                 if args.verbose: print("\nStatus: %s is unconserved-anchored" % (qlocus))
                 nbr_anchored += 1
+                qsrelations.update( {qlocus: ['anchored_by']} )
+                qsrelations[qlocus].extend(anchored_by)
             continue
         if len(conserved_as) == 1:
             conservediloci[qlocus] = conserved_as
+            qsrelations.update( {qlocus: ['conserved']} )
+            qsrelations[qlocus].extend(conserved_as)
             if args.verbose: print("\nStatus: %s is conserved as %s\n" % (qlocus,conservediloci[qlocus][0]))
         else:
             #We have multiple conserved targets. Is one best?
@@ -137,6 +147,8 @@ for qlocus in qloci:
                 if args.verbose: print("\nStatus: %s is conserved as %s (and repetitive)\n" % (qlocus,conservediloci[qlocus][0]))
             else:
                 if args.verbose: print("\nStatus: %s is multiply conserved as %s\n" % (qlocus,conservediloci[qlocus]))
+            qsrelations.update( {qlocus: ['conserved']} )
+            qsrelations[qlocus].extend(conservediloci)
         nbr_conserved += 1
 
 
@@ -154,7 +166,28 @@ print("   Number of qloci   contained:\t", nbr_contained)
 print("   Number of qloci    anchored:\t", nbr_anchored)
 print("   Number of qloci   redefined:\t", nbr_redefined)
 
-###print("\n\nAmel-conserved:\n")
-###print(conservediloci)
-###with open('Amel-conserved','wb') as f:
-###    pickle.dump(conservediloci,f)
+counts = {}
+counts['qloci_all']         = nbr_qloci
+counts['qloci_wohits']      = nbr_qloci - nbr_unmapped - nbr_mapped
+counts['qloci_unmapped']    = nbr_unmapped
+counts['qloci_mapped']      = nbr_mapped
+counts['qloci_unconserved'] = nbr_unconserved
+counts['qloci_redefined']   = nbr_redefined
+counts['qloci_contained']   = nbr_contained
+counts['qloci_anchored']    = nbr_anchored
+counts['qloci_conserved']   = nbr_conserved
+
+
+if args.output:
+    with open(args.output.name + '.counts', 'w') as f:
+        f.write(json.dumps(counts))
+        f.close
+    with open(args.output.name + '.qsrelations', 'w') as f:
+        f.write(json.dumps(qsrelations))
+        f.close
+###with open(args.output.name + '.counts', 'r') as f:
+###    j = json.load(f)
+###print(json.dumps(j, sort_keys=False, indent=4))
+###with open(args.output.name + '.qsrelations', 'r') as f:
+###    j = json.load(f)
+###print(json.dumps(j, sort_keys=False, indent=4))

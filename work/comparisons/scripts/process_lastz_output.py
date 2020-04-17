@@ -181,9 +181,11 @@ counts['qloci_conserved']   = nbr_conserved
 if args.output:
     with open(args.output.name + '.counts', 'w') as f:
         f.write(json.dumps(counts))
+        f.write("\n")
         f.close
     with open(args.output.name + '.qsrelations', 'w') as f:
         f.write(json.dumps(qsrelations))
+        f.write("\n")
         f.close
 ###with open(args.output.name + '.counts', 'r') as f:
 ###    j = json.load(f)

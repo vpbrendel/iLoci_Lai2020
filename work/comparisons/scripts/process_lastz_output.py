@@ -148,7 +148,7 @@ for qlocus in qloci:
             else:
                 if args.verbose: print("\nStatus: %s is multiply conserved as %s\n" % (qlocus,conservediloci[qlocus]))
             qsrelations.update( {qlocus: ['conserved']} )
-            qsrelations[qlocus].extend(conservediloci)
+            qsrelations[qlocus].extend(conservediloci[qlocus])
         nbr_conserved += 1
 
 

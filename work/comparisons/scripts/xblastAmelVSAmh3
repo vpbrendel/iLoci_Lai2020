@@ -1,0 +1,12 @@
+#!/bin/bash
+
+amel="AmelILC-"$1
+amh3="Amh3ILC-"$2
+
+echo "Comparing $amel versus $amh3:"
+echo ""
+blastdbcmd -entry $amel -db ./Amel/AmelILC > query
+blastdbcmd -entry $amh3 -db ./Amel/Amh3ILC > subject
+blastn -query query -subject subject -outfmt 7 | more
+blastn -query query -subject subject > blast.out
+vi blast.out

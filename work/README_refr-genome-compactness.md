@@ -16,7 +16,7 @@ fidibus-compact.py --workdir=data/ --length=1000000 \
 ```
 
 (script implementing the above and the commands in the next section:
-[run-explore-deltas.sh](./run-explore-compactness-refr.sh)).
+[run-explore-compactness-refr.sh](./run-explore-compactness-refr.sh)).
 
 ## Different values of δ
 

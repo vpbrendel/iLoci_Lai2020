@@ -10,6 +10,6 @@ branches=(fungi invertebrate plant protozoa vertebrate_mammalian vertebrate_othe
 for branch in ${branches[@]}
 do
     mkdir ${branch}_configs
-    lftp -e "find;quit" ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/${branch}/ | grep -E "latest_assembly_versions/\w" > ${branch}_latest.txt
+    lftp -e "find;quit" ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/${branch}/ | egrep "latest_assembly_versions/\w+" > ${branch}_latest.txt
     python make-cfg_files.py $branch
 done

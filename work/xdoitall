@@ -1,5 +1,9 @@
+# Get the AEGeAn singularity container
+# #
 singularity pull --name aegean.simg shub://BrendelGroup/AEGeAn
 
+# A bit of preparation:
+#
 cd downloads
 # ... read the instructions in xgetDpul first (you will need to set up a JGI
 #  account to get the Daphnia pulex data ...):
@@ -7,11 +11,25 @@ cd downloads
 ./xgetDpul
 cd ..
 
+# The basics (see README_refr-genome-summary.md):
+#
 singularity exec -e aegean.simg  ./run-fidibus-stats.sh
+
+# Free up disk space and put log files into the logfiles directory:
+#
 singularity exec -e aegean.simg  ./run-fidibus-cleanup.sh
+
+# Create the tables subdirectory and deposit the first few entries:
+#
 singularity exec -e aegean.simg  ./make-Tables1-3.sh
+
+# Exploring genome compactness (see README_refr-genome-compactness.md):
+#
 singularity exec -e aegean.simg  ./run-explore-compactness-refr.sh
 singularity exec -e aegean.simg  ./run-explore-compactness-othg.sh
+
+# Exploring a group of genomes (see README_explore-Chlorophyta.md):
+#
 singularity exec -e aegean.simg  ./run-explore-Chlorophyta.sh >& logfiles/Chlorophyta.log
 
 ./make-figures.sh

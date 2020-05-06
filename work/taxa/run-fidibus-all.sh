@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 
-#Note: We assume that you have sufficient processors to run all branchds separately
-#      in the background.
+#Note: We assume that you have sufficient processors to run all branches
+#      separately in the background.
 
 mkdir logfiles
 branches=(fungi invertebrate plant protozoa vertebrate_mammalian vertebrate_other)

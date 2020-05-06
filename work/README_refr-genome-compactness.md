@@ -12,11 +12,11 @@ Extremely long iiLoci (those in the top 5% of length for each species) and extre
 fidibus-compact.py --workdir=data/ --length=1000000 \
                   --iqnt=0.95 --gqnt=0.05 \
                   Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap \
-    > tables/phisigma-refr.tsv
+    > phisigma-refr.tsv
 ```
 
-(script for the above and the commands in the next section:
-[run-explore-deltas.sh](./run-explore-deltas.sh)).
+(script implementing the above and the commands in the next section:
+[run-explore-deltas.sh](./run-explore-compactness-refr.sh)).
 
 ## Different values of δ
 
@@ -65,6 +65,9 @@ parallel --gnu --jobs=10 bash shuffle.sh {} ::: Scer Cele Crei Mtru Agam Dmel Xt
 fidibus-milocus-summary.py --shuffled --workdir=species --outfmt=tex \
                           Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap
 ```
+
+(nicely sped up thanks to O. Tange (2018): GNU Parallel 2018, Mar 2018, ISBN 9781387509881, [DOI https://doi.org/10.5281/zenodo.1146014](https://doi.org/10.5281/zenodo.1146014).)
+
 
 The (phi, sigma) values of genome compactness were computed for the shuffled data for comparison with the observed data.
 A single (phi, sigma) value was reported for each genome, computed as the average (centroid) of all (phi, sigma) values for that species.

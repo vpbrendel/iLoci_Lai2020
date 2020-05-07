@@ -17,4 +17,3 @@ do
 	--centroid=2.25 --length=1000000 --iqnt=0.95 --gqnt=0.05 ${species_list[@]} \
 	> ${branch}_centroids.tsv
 done
-#python compute_averages.py

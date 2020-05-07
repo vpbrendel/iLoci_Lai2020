@@ -1,9 +1,13 @@
 singularity exec -e ../aegean.simg  ./configure-genomes.sh 
 singularity exec -e ../aegean.simg  ./run-fidibus-all.sh
-singularity exec -e ../aegean.simg  ./get-statistics.sh >& err
+singularity exec -e ../aegean.simg  ./get-statistics.sh
 singularity exec -e ../aegean.simg  python3 make-SuppTable234_taxa_averages.py
 mv LSB20GB-SuppTable*_averages.tsv ../tables
 
 # Consolidate the output files into directory OUTPUT:
 #
-mv fungi* inver* plant* prot* vert* OUTPUT
+mkdir OUTPUT
+mv fungi_* invertebrate_* plant_* protozoa_* vertebrate_* OUTPUT/
+
+# For visualization, you may run the make-F3b.ipynb jupyter notebook
+# (note: this requires that the ../figures directory exists).

@@ -38,5 +38,5 @@ fidibus-compact.py --workdir=data --length=2000000 \
 #
 fidibus-compact.py --workdir=data --length=1000000 \
 		--iqnt=0.95 --gqnt=0.05 \
-		Hsap Mmus Mvit \
+		Acen Clan Lcan Hsap Mmus Mvit \
     > tables/phisigma-Mvit.tsv

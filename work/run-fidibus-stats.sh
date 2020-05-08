@@ -68,12 +68,12 @@ fidibus   --workdir=data  --numprocs=${NUMPROCS} \
 fidibus --cfgdir=genome_configs --workdir=data --refr=Dpul \
         download prep iloci breakdown stats	>& err_Dpul
 
-for species in  Mvit Tcas Turt
+for species in  Acen Clan Lcan Mvit Tcas Turt
 do
   fidibus  --workdir=data  --refr=$species  download prep  >& err_$species &
 done
 wait
 
 fidibus   --workdir=data  --numprocs=${NUMPROCS} \
-	--refr=Mvit,Tcas,Turt \
+	--refr=Acen,Clan,Lcan,Mvit,Tcas,Turt \
 	iloci breakdown stats   >& err_all5

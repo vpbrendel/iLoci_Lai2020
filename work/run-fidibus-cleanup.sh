@@ -7,7 +7,7 @@
 for species in  Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap \
 	Vcar Apro Crei Csub Cvar Mcom Mpus Oluc Otau \
 	Atha Bdis Osat \
-	Pdom Aech Agam Amh3 Bter Cflo Dmel Hsal Nvit Pcan \
+	Pdom Aech Agam Amel Bter Cflo Dmel Hsal Nvit Pcan \
 	Mvit Tcas Turt
 do
   fidibus \

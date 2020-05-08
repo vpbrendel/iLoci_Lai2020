@@ -32,4 +32,12 @@ singularity exec -e aegean.simg  ./run-explore-compactness-othg.sh
 #
 singularity exec -e aegean.simg  ./run-explore-Chlorophyta.sh >& logfiles/Chlorophyta.log
 
+# Analyzing genome compactness for different branches of the tree of life
+# (see taxa/README.md):
+#
+cd taxa
+source ./xdoit
+cd .. 
+
+###############################################################################
 ./make-figures.sh

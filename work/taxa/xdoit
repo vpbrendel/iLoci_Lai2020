@@ -7,7 +7,7 @@ mv LSB20GB-SuppTable*_averages.tsv ../tables
 # Consolidate the output files into directory OUTPUT:
 #
 mkdir OUTPUT
-mv fungi_* invertebrate_* plant_* protozoa_* vertebrate_* OUTPUT/
+mv *_configs *_configured.txt *_latest.txt *_parsed.txt *_work  OUTPUT/
 
 # For visualization, you may run the make-F3b.ipynb jupyter notebook
 # (note: this requires that the ../figures directory exists).

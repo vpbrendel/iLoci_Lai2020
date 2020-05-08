@@ -52,14 +52,14 @@ fidibus   --workdir=data  --numprocs=${NUMPROCS} \
 
 # (iii) Polistes dominula and other Hymenoptera:
 #
-for species in  Pdom Aech Agam Amh3 Bter Cflo Dmel Hsal Nvit Pcan 
+for species in  Pdom Aech Agam Amel Bter Cflo Dmel Hsal Nvit Pcan 
 do
   fidibus  --workdir=data  --refr=$species  download prep  >& err_$species &
 done
 wait
 
 fidibus   --workdir=data  --numprocs=${NUMPROCS} \
-	--refr=Pdom,Aech,Agam,Amh3,Bter,Cflo,Dmel,Hsal,Nvit,Pcan \
+	--refr=Pdom,Aech,Agam,Amel,Bter,Cflo,Dmel,Hsal,Nvit,Pcan \
 	iloci breakdown stats   >& err_all4
 
 

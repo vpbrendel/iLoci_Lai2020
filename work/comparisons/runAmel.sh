@@ -7,9 +7,9 @@ set -o pipefail
 #1) Data set preparation:
 #
 mkdir Amel
-labels=(Amel Amh3)
+labels=(Am45 Amel)
 
-fidibus --numprocs=2 --refr=Amel,Amh3 download prep iloci breakdown stats
+fidibus --numprocs=2 --refr=Am45,Amel download prep iloci breakdown stats
 
 for species in ${labels[@]}
 do
@@ -20,10 +20,10 @@ done
 #\rm -rf species
 
 cd ./Amel
+makeblastdb -in Am45.iloci.fa -dbtype nucl -out Am45ILC -parse_seqids
 makeblastdb -in Amel.iloci.fa -dbtype nucl -out AmelILC -parse_seqids
-makeblastdb -in Amh3.iloci.fa -dbtype nucl -out Amh3ILC -parse_seqids
+python3 ../scripts/split_iloci_by_type.py Am45
 python3 ../scripts/split_iloci_by_type.py Amel
-python3 ../scripts/split_iloci_by_type.py Amh3
 cd ..
 
 
@@ -33,26 +33,26 @@ cd ./Amel
 
 # Assuming we have at least 5 processors, we run each lastz job in the background:
 #
-lastz Amh3.iloci.fa[multiple] Amel.filoci.fa --allocate:traceback=500M \
+lastz Amel.iloci.fa[multiple] Am45.filoci.fa --allocate:traceback=500M \
 		--ambiguous=iupac --filter=identity:95 --chain \
 		--format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
-		> Amel.filoci-vs-Amh3.lastz &
-lastz Amh3.iloci.fa[multiple] Amel.ciloci.fa --allocate:traceback=500M \
+		> Am45.filoci-vs-Amel.lastz &
+lastz Amel.iloci.fa[multiple] Am45.ciloci.fa --allocate:traceback=500M \
 		--ambiguous=iupac --filter=identity:95 --chain \
 		--format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
-		> Amel.ciloci-vs-Amh3.lastz &
-lastz Amh3.iloci.fa[multiple] Amel.niloci.fa --allocate:traceback=500M \
+		> Am45.ciloci-vs-Amel.lastz &
+lastz Amel.iloci.fa[multiple] Am45.niloci.fa --allocate:traceback=500M \
 		--ambiguous=iupac --filter=identity:95 --chain \
 		--format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
-		> Amel.niloci-vs-Amh3.lastz &
-lastz Amh3.iloci.fa[multiple] Amel.iiloci.fa --allocate:traceback=500M \
+		> Am45.niloci-vs-Amel.lastz &
+lastz Amel.iloci.fa[multiple] Am45.iiloci.fa --allocate:traceback=500M \
 		--ambiguous=iupac --filter=identity:95 --chain \
 		--format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
-		> Amel.iiloci-vs-Amh3.lastz &
-lastz Amh3.iloci.fa[multiple] Amel.siloci.fa --allocate:traceback=500M \
+		> Am45.iiloci-vs-Amel.lastz &
+lastz Amel.iloci.fa[multiple] Am45.siloci.fa --allocate:traceback=500M \
 		--ambiguous=iupac --filter=identity:95 --chain \
 		--format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
-		> Amel.siloci-vs-Amh3.lastz &
+		> Am45.siloci-vs-Amel.lastz &
 wait
 cd ..
 
@@ -64,8 +64,8 @@ iltypes=(filoci ciloci iiloci niloci siloci)
 cd ./Amel
 for iltype in ${iltypes[@]}
 do
-  n=`cat Amel.${iltype}.fa | egrep "^>" | wc -l`
-  python3 ../scripts/process_lastz_output.py -n $n -i Amel.${iltype}-vs-Amh3.lastz -v -o Amel.${iltype}-vs-Amh3.summary
+  n=`cat Am45.${iltype}.fa | egrep "^>" | wc -l`
+  python3 ../scripts/process_lastz_output.py -n $n -i Am45.${iltype}-vs-Amel.lastz -v -o Am45.${iltype}-vs-Amel.summary
 done
 cd ..
 
@@ -76,26 +76,26 @@ cd ./Amel
 
 # Assuming we have at least 5 processors, we run each lastz job in the background:
 #
-lastz Amel.iloci.fa[multiple] Amh3.filoci.fa --allocate:traceback=500M \
+lastz Am45.iloci.fa[multiple] Amel.filoci.fa --allocate:traceback=500M \
 		--ambiguous=iupac --filter=identity:95 --chain \
 		--format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
-		> Amh3.filoci-vs-Amel.lastz &
-lastz Amel.iloci.fa[multiple] Amh3.ciloci.fa --allocate:traceback=500M \
+		> Amel.filoci-vs-Am45.lastz &
+lastz Am45.iloci.fa[multiple] Amel.ciloci.fa --allocate:traceback=500M \
 		--ambiguous=iupac --filter=identity:95 --chain \
 		--format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
-		> Amh3.ciloci-vs-Amel.lastz &
-lastz Amel.iloci.fa[multiple] Amh3.niloci.fa --allocate:traceback=500M \
+		> Amel.ciloci-vs-Am45.lastz &
+lastz Am45.iloci.fa[multiple] Amel.niloci.fa --allocate:traceback=500M \
 		--ambiguous=iupac --filter=identity:95 --chain \
 		--format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
-		> Amh3.niloci-vs-Amel.lastz &
-lastz Amel.iloci.fa[multiple] Amh3.iiloci.fa --allocate:traceback=500M \
+		> Amel.niloci-vs-Am45.lastz &
+lastz Am45.iloci.fa[multiple] Amel.iiloci.fa --allocate:traceback=500M \
 		--ambiguous=iupac --filter=identity:95 --chain \
 		--format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
-		> Amh3.iiloci-vs-Amel.lastz &
-lastz Amel.iloci.fa[multiple] Amh3.siloci.fa --allocate:traceback=500M \
+		> Amel.iiloci-vs-Am45.lastz &
+lastz Am45.iloci.fa[multiple] Amel.siloci.fa --allocate:traceback=500M \
 		--ambiguous=iupac --filter=identity:95 --chain \
 		--format=general:name1,length1,size1,name2,length2,size2,identity,nmatch \
-		> Amh3.siloci-vs-Amel.lastz &
+		> Amel.siloci-vs-Am45.lastz &
 wait
 cd ..
 
@@ -107,7 +107,7 @@ iltypes=(filoci ciloci iiloci niloci siloci)
 cd Amel
 for iltype in ${iltypes[@]}
 do
-  n=`cat Amh3.${iltype}.fa | egrep "^>" | wc -l`
-  python3 ../scripts/process_lastz_output.py -n $n -i Amh3.${iltype}-vs-Amel.lastz -v -o Amh3.${iltype}-vs-Amel.summary
+  n=`cat Amel.${iltype}.fa | egrep "^>" | wc -l`
+  python3 ../scripts/process_lastz_output.py -n $n -i Amel.${iltype}-vs-Am45.lastz -v -o Amel.${iltype}-vs-Am45.summary
 done
 cd ..

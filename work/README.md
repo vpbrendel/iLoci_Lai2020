@@ -41,8 +41,8 @@ sudo dnf install libXcomposite libXcursor libXi libXtst libXrandr \
 
 #Download the Anaconda3 installer from https://www.anaconda.com/, then e.g.:
 #
-bash ~/Downloads/Anaconda3-2019.10-Linux-x86_64.sh
-\rm  ~/Downloads/Anaconda3-2019.10-Linux-x86_64.sh
+bash ~/Downloads/Anaconda3-2020.02-Linux-x86_64.sh
+\rm  ~/Downloads/Anaconda3-2020.02-Linux-x86_64.sh
 
 #In a new shell:
 #

@@ -18,14 +18,14 @@ The simplest way to get going is to use the AEGeAn
 ```bash
 cd
 git clone https://github.com/BrendelGroup/iLoci_Lai2020
-cd iLoci_Lai2020
+cd iLoci_Lai2020/work
 singularity pull --name aegean.simg shub://BrendelGroup/AEGeAn
-rws="singularity exec -e -B ~/iLoci_Lai2020 ~/iLoci_Lai2020/aegean.simg"
+rws="singularity exec -e -B ~/iLoci_Lai2020 ~/iLoci_Lai2020/work/aegean.simg"
 $rws fidibus -h
 ```
 
 In the above example, you clone this repository into your Linux home directory,
-go into the iLoci_Lai2020 directory that has been created, download the AEGeAn
+go into the iLoci_Lai2020/work directory that has been created, download the AEGeAn
 Singularity container, define the shell variable _rws_ ("run with singularity"),
 and check that everything works by showing the "help" lines for the AEGeAn
 command _fididbus_.

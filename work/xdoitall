@@ -1,5 +1,5 @@
 # Get the AEGeAn singularity container
-# #
+#
 singularity pull --name aegean.simg shub://BrendelGroup/AEGeAn
 
 # A bit of preparation:
@@ -13,31 +13,171 @@ cd ..
 
 # The basics (see README_refr-genome-summary.md):
 #
-singularity exec -e aegean.simg  ./run-fidibus-stats.sh
+rws="singularity exec -e -B /projects/vbrendel/iLoci_Lai2020 /projects/vbrendel/iLoci_Lai2020/work/aegean.simg"
+time $rws wfscripts/run-fidibus-stats.sh 
+
+#real	88m42.496s
+#user	301m41.611s
+#sys	14m19.346s
+
+du -sh
+#137G	.
 
 # Free up disk space and put log files into the logfiles directory:
 #
-singularity exec -e aegean.simg  ./run-fidibus-cleanup.sh
+$rws wfscripts/run-fidibus-cleanup.sh 
+du -sh
+#74G	.
 
 # Create the tables subdirectory and deposit the first few entries:
 #
-singularity exec -e aegean.simg  ./make-Tables1-3.sh
+$rws wfscripts/make-Tables1-3.sh
+
+
+# Create the figures subdirectory and deposit the first entry:
+#
+conda activate iLoci
+jupyter nbconvert --to notebook --execute --inplace  notebooks/make-SF1.ipynb
+eog figures/LSB20GB-SuppFig1.png
+
+# Looking at r-scans of iiLocus lengths:
+#
+jupyter nbconvert --to notebook --execute --inplace \
+	--ExecutePreprocessor.timeout=600 notebooks/make-SF2.ipynb
+eog figures/LSB20GB-SuppFig2_*.png
+
+# Looking at gene orientation patterns:
+#
+jupyter nbconvert --to notebook --execute --inplace make-SF3.ipynb
+eog figures/LSB20GB-SuppFig3_*.png
+
 
 # Exploring genome compactness (see README_refr-genome-compactness.md):
 #
-singularity exec -e aegean.simg  ./run-explore-compactness-refr.sh
-singularity exec -e aegean.simg  ./run-explore-compactness-othg.sh
+time $rws wfscripts/run-explore-compactness-refr.sh
+
+#real	87m52.471s
+#user	280m18.508s
+#sys	11m29.965s
+
+du -sh
+#208G	.
+#
+# ... genereates in subdirectory "tables:"
+#
+phisigma-refr-shuffled-centroids-delta500.tsv
+LSB20GB-SuppTable1-miloci.tex
+phisigma-refr-centroids-delta750.tsv
+phisigma-refr-centroids-delta300.tsv
+phisigma-refr-centroids-delta500.tsv
+phisigma-refr.tsv
+
+# ... and for additional genomes:
+time $rws wfscripts/run-explore-compactness-othg.sh
+
+# ... genereates in subdirectory "tables:"
+#
+phisigma-Mvit.tsv
+phisigma-Dpul.tsv
+phisigma-Pdom-min3Mb.tsv
+phisigma-Pdom-min2Mb.tsv
+phisigma-Pdom-min1Mb.tsv
+phisigma-Vcar.tsv
+
+
+# ... visualizing the output:
+#
+jupyter nbconvert --to notebook --execute --inplace notebooks/make-F3a-SF5-SF6.ipynb 
+
 
 # Exploring a group of genomes (see README_explore-Chlorophyta.md):
 #
-singularity exec -e aegean.simg  ./run-explore-Chlorophyta.sh >& logfiles/Chlorophyta.log
+time $rws wfscripts/run-explore-Chlorophyta.sh >& logfiles/Chlorophyta.log
+
+#real	83m48.868s
+#user	479m12.918s
+#sys	0m5.505s
+
+
+# ... visualizing the output:
+#
+jupyter nbconvert --to notebook --execute --inplace notebooks/make-F4a-F4b-SF4a.ipynb
+jupyter nbconvert --to notebook --execute --inplace notebooks/make-SF4b.ipynb 
+jupyter nbconvert --to notebook --execute --inplace notebooks/make-SF4c-SF7.ipynb 
+jupyter nbconvert --to notebook --execute --inplace notebooks/make-SF4d.ipynb 
+
 
 # Analyzing genome compactness for different branches of the tree of life
 # (see taxa/README.md):
 #
 cd taxa
-source ./xdoit
-cd .. 
+time $rws ./configure-genomes.sh
+#real	16m38.603s
+#user	0m11.982s
+#sys	0m4.172s
+#
+# ... creates:
+#
+# (iLoci) [31]wc -l *txt
+#  313 fungi_configured.txt
+#  333 fungi_latest.txt
+#  211 invertebrate_configured.txt
+#  217 invertebrate_latest.txt
+#  121 plant_configured.txt
+#  127 plant_latest.txt
+#   88 protozoa_configured.txt
+#   94 protozoa_latest.txt
+#  138 vertebrate_mammalian_configured.txt
+#  143 vertebrate_mammalian_latest.txt
+#  201 vertebrate_other_configured.txt
+#  207 vertebrate_other_latest.txt
+
+# ... and now the work (ran in about 26.5h):
+#
+$rws ./run-fidibus-all.sh
+
+# ... creates directories *_work
+
+time $rws ./get-statisticis.sh
+#real	50m20.799s
+#user	46m55.569s
+#sys	1m46.583s
+
+# ... creates *-*locus-summaries.tsv
+
+$rws python make-SuppTable234_taxa_averages.py 
+mv LSB20GB-SuppTable*_averages.tsv ../tables
+
+# Consolidate the output files into directory OUTPUT:
+#
+mkdir OUTPUT
+mv *_configs *_configured.txt *_latest.txt *_parsed.txt *_work  OUTPUT/
+
+# ... visualizing the output:
+#
+cd ..
+jupyter nbconvert --to notebook --execute --inplace notebooks/make-F3b.ipynb
+
+du -sh
+#553G   .
+
+
+# Comparison of (asembly/annotation) pairs:
+#
+cd comparisons
+time $rws ./runAtha.sh >& errAtha
+#real	897m8.544s
+#user	1541m46.776s
+#sys	1m12.871s
+
+time $rws ./runAmel.sh >& errAmel
+#real	606m20.701s
+#user	1190m1.853s
+#sys	1m10.143s
+
+
+
+
 
 ###############################################################################
 ./make-figures.sh

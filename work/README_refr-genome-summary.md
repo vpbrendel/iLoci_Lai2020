@@ -14,8 +14,9 @@ The `fidibus` script was used to perform the following tasks:
 - compile tables of summary statistics over the data (the `stats` task)
 
 You can copy/paste the relevant command from below or alternatively execute
-the [run-fidibus-stats.sh](./run-fidibus-stats.sh) and
-[run-fidibus-cleanup.sh](./run-fidibus-cleanup.sh)  bash scripts.
+the [run-fidibus-stats.sh](./wfscripts/run-fidibus-stats.sh) and
+[run-fidibus-cleanup.sh](./wfscripts/run-fidibus-cleanup.sh) workflow bash
+scripts in the [wfscripts](./wfscripts) directory.
 Note that the scripts include also the work on the special interest genomes
 described in the manuscript, documentation of which is not repeated here.
 
@@ -26,8 +27,8 @@ fidibus --workdir=data \
         download prep iloci breakdown stats
 ```
 
-This command could take up to an hour to run: go enjoy lunch or read a paper
-while you wait!
+This command could take up to a couple of hours to run: go enjoy lunch or
+read a paper while you wait!
 You will want to adjust the `--numprocs` parameter based on the number of
 available processors on your computer, as processing multiple genomes in
 parallel will complete the task more quickly.
@@ -49,7 +50,7 @@ Of particular interest are the following:
 
 Summaries of iLocus composition for these genomes, corresponding to Tables 1-3
 in the manuscript, were computed with the following commands (script
-[make-Tables1-3.sh](./make-Tables1-3.sh)).
+[wfscripts/make-Tables1-3.sh](./wfscripts/make-Tables1-3.sh)).
 
 ```bash
 fidibus-ilocus-summary.py  --workdir=data --outfmt=tsv Scer Cele Crei Mtru Agam Dmel Xtro Drer Mmus Hsap

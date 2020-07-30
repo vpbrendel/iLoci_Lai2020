@@ -3,8 +3,10 @@ Instructions necessary to produce the results discussed in the paper, from
 download of primary data to computations and tables/figures, are given in a
 sequence of scripts and Jupyter notebooks as recored in file ./xdoitall.
 Each individual analysis should run with no problem on a laptop or desktop
-computer, although reproducing all analyses requires about 200 GB of free disk
-space for temporary storage of raw and intermediate data files.
+computer, although reproducing all the basic analyses requires about 200 GB
+of free disk space for temporary storage of raw and intermediate data files
+(the large-scale genome compactness analysis summarizing different clades of
+species in the [./taxa](./taxa) subdirectory would require another 350-400 GB).
 
 
 ## Bash scripts

@@ -3,11 +3,11 @@
 We selected a diverse set of 10 model organisms to demonstrate the utility of
 iLoci for providing a descriptive overview of genome content and organization.
 
-## Data retrieval, processing
+## Data retrieval and processing
 
 The `fidibus` script was used to perform the following tasks:
 
-- retrieve genome assemblied and annotations from [NCBI RefSeq](http://www.ncbi.nlm.nih.gov/refseq/) (the `download` task)
+- retrieve genome assemblies and annotations from [NCBI RefSeq](http://www.ncbi.nlm.nih.gov/refseq/) (the `download` task)
 - pre-process the data (the `prep` task)
 - compute iLoci (the `iloci` task)
 - collate sequences and annotations for various feature types (the `breakdown` task)
@@ -32,8 +32,8 @@ read a paper while you wait!
 You will want to adjust the `--numprocs` parameter based on the number of
 available processors on your computer, as processing multiple genomes in
 parallel will complete the task more quickly.
-However, the mammalian genomes each take on the order of 30 minutes, so that's
-about the best runtime that can be expected.
+However, the mammalian genomes each take on the order of 30 minutes, so that
+is about the best runtime that can be expected.
 
 ## Output data
 

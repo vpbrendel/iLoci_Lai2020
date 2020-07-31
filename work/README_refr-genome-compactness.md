@@ -81,4 +81,4 @@ fidibus-compact.py --shuffled --centroid=2.25 --length=1000000 --iqnt=0.95 --gqn
 
 ## Figures
 
-See [make-F3a-SF5-SF6.ipynb](make-F3a-SF5-SF6.ipynb) for visualization of these data.
+See [notebooks/make-F3a-SF6-SF7.ipynb](./notebooks/make-F3a-SF6-SF7.ipynb) for visualization of these data.

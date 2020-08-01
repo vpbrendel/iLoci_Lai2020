@@ -13,9 +13,9 @@ fidibus --numprocs=2 --refr=Am45,Amel download prep iloci breakdown stats
 
 for species in ${labels[@]}
 do
-    ln -s species/${species}/${species}.iloci.tsv  Amel/ 
-    ln -s species/${species}/${species}.iloci.fa   Amel/
-    ln -s species/${species}/${species}.iloci.gff3 Amel/
+    ln -s ../species/${species}/${species}.iloci.tsv  Amel/ 
+    ln -s ../species/${species}/${species}.iloci.fa   Amel/
+    ln -s ../species/${species}/${species}.iloci.gff3 Amel/
 done
 
 cd ./Amel

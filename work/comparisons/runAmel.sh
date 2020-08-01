@@ -13,11 +13,10 @@ fidibus --numprocs=2 --refr=Am45,Amel download prep iloci breakdown stats
 
 for species in ${labels[@]}
 do
-    mv species/${species}/${species}.iloci.tsv  Amel/ 
-    mv species/${species}/${species}.iloci.fa   Amel/
-    mv species/${species}/${species}.iloci.gff3 Amel/
+    ln -s species/${species}/${species}.iloci.tsv  Amel/ 
+    ln -s species/${species}/${species}.iloci.fa   Amel/
+    ln -s species/${species}/${species}.iloci.gff3 Amel/
 done
-#\rm -rf species
 
 cd ./Amel
 makeblastdb -in Am45.iloci.fa -dbtype nucl -out Am45ILC -parse_seqids

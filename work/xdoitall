@@ -181,16 +181,20 @@ du -sh
 #
 cd comparisons
 time $rws ./runAtha.sh >& errAtha
-#real	897m8.544s
-#user	1541m46.776s
-#sys	1m12.871s
+#real	624m3.100s
+#user	1081m3.564s
+#sys	11m28.767s
 
 time $rws ./runAmel.sh >& errAmel
-#real	606m20.701s
-#user	1190m1.853s
-#sys	1m10.143s
+#real	446m48.835s
+#user	853m32.707s
+#sys	31m28.145s
 
-
+# ... visualizing the output:
+#
+cd ..
+jupyter nbconvert --to notebook --execute --inplace notebooks/make-F5-F6.ipynb
+$rws wfscripts/make-SuppTable5.sh
 
 
 

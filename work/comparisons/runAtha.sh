@@ -13,9 +13,9 @@ fidibus --numprocs=2 --refr=Att6,Atha download prep iloci breakdown stats
 
 for species in ${labels[@]}
 do
-    ln -s species/${species}/${species}.iloci.tsv  Atha/ 
-    ln -s species/${species}/${species}.iloci.fa   Atha/
-    ln -s species/${species}/${species}.iloci.gff3 Atha/
+    ln -s ../species/${species}/${species}.iloci.tsv  Atha/ 
+    ln -s ../species/${species}/${species}.iloci.fa   Atha/
+    ln -s ../species/${species}/${species}.iloci.gff3 Atha/
 done
 
 cd ./Atha

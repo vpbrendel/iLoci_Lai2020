@@ -16,3 +16,4 @@ do
         fi
         find ${branch}_work/${species} -type f -not -name "${species}*.gff3" -and -not -name "${species}*.tsv" -exec rm {} \;
 done
+omm -2 -3 ${branch}_configured.txt ${branch}_parsed.txt > ${branch}_failed.txt

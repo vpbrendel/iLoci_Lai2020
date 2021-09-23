@@ -1,6 +1,6 @@
 #The following would be nice, but in reality, you will need to set up an
 # account with JGI (https://signon.jgi.doe.gov/signon), open the links,
-# choose to download the files, and then # move the files into this directory ...
+# choose to download the files, and then move the files into this directory ...
 #
 #curl -O http://genome.jgi.doe.gov/Dappu1/download/Daphnia_pulex.fasta.gz
 #curl -O http://genome.jgi.doe.gov/Dappu1/download/FrozenGeneCatalog20110204.gff3.gz

@@ -1,7 +1,7 @@
-singularity exec -e ../aegean.simg  ./configure-genomes.sh 
-singularity exec -e ../aegean.simg  ./run-fidibus-all.sh
-singularity exec -e ../aegean.simg  ./get-statistics.sh
-singularity exec -e ../aegean.simg  python3 make-SuppTable234_taxa_averages.py
+singularity exec -e ../aegean.sif  ./configure-genomes.sh 
+singularity exec -e ../aegean.sif  ./run-fidibus-all.sh
+singularity exec -e ../aegean.sif  ./get-statistics.sh
+singularity exec -e ../aegean.sif  python3 make-SuppTable234_taxa_averages.py
 mv LSB20GB-SuppTable*_averages.tsv ../tables
 
 # Consolidate the output files into directory OUTPUT:
